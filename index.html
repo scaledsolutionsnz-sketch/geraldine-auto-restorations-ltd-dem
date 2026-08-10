@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geraldine Auto Restorations Ltd | Classic & Modern Vehicle Restoration</title>
+<meta name="description" content="Geraldine Auto Restorations Ltd — expert vehicle restoration, panel beating, and automotive services in Geraldine, South Canterbury.">
+<link rel="icon" type="image/png" href="img/logo.png">
+<meta property="og:title" content="Geraldine Auto Restorations Ltd">
+<meta property="og:description" content="Classic and modern vehicle restoration, panel beating and paint in Geraldine, South Canterbury.">
+<meta property="og:image" content="img/hero1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #0b0b0d;
+    --dark2: #141416;
+    --dark3: #1c1c1f;
+    --cream: #f8f5f0;
+    --cream2: #f0ece5;
+    --red: #c8302a;
+    --red-dark: #a82520;
+    --white: #ffffff;
+    --text-muted: #9a9a9a;
+    --border: rgba(255,255,255,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+  /* LOADER */
+  #loader {
+    position: fixed; inset: 0; background: var(--dark); z-index: 9999;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  #loader.hidden { opacity: 0; visibility: hidden; }
+  #loader-name {
+    font-family: 'Oswald', sans-serif; font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 600; color: var(--white); letter-spacing: 0.12em; text-transform: uppercase;
+    text-align: center; padding: 0 1rem;
+  }
+  #loader-sub {
+    font-family: 'Barlow', sans-serif; font-size: 0.85rem; color: var(--text-muted);
+    letter-spacing: 0.25em; text-transform: uppercase; margin-top: 0.5rem;
+  }
+  #loader-bar-wrap {
+    width: min(340px, 80vw); height: 2px; background: rgba(255,255,255,0.1);
+    margin-top: 2.5rem; border-radius: 2px; overflow: hidden;
+  }
+  #loader-bar {
+    height: 100%; width: 0; background: var(--red); border-radius: 2px;
+    animation: loadBar 1.2s ease forwards 0.15s;
+  }
+  @keyframes loadBar { to { width: 100%; } }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    padding: 1.2rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.35s, backdrop-filter 0.35s, padding 0.35s, box-shadow 0.35s;
+  }
+  nav.scrolled {
+    background: rgba(11,11,13,0.94); backdrop-filter: blur(14px);
+    padding: 0.85rem 2rem; box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+  }
+  .nav-logo {
+    font-family: 'Oswald', sans-serif; font-size: 1.15rem; font-weight: 600;
+    color: var(--white); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Barlow', sans-serif; font-size: 0.88rem; font-weight: 500;
+    color: rgba(255,255,255,0.85); text-decoration: none; letter-spacing: 0.05em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red); }
+  .nav-cta {
+    background: var(--red); color: var(--white) !important; padding: 0.55rem 1.4rem;
+    border-radius: 4px; transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px; background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--dark); z-index: 800; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 500;
+    color: var(--white); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--red); }
+
+  /* HERO */
+  #hero {
+    position: relative; height: 100vh; min-height: 640px;
+    display: flex; align-items: center; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0; transform: scale(1.08); will-change: opacity, transform;
+    transition: opacity 2s ease, transform 9s ease;
+  }
+  .hero-bg.active { opacity: 1; transform: scale(1); }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(11,11,13,0.94) 0%, rgba(11,11,13,0.78) 40%, rgba(11,11,13,0.4) 72%, rgba(200,48,42,0.14) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2; max-width: 1200px; margin: 0; width: 100%;
+    padding: 0 2rem; padding-top: 80px; text-align: left;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(200,48,42,0.15); border: 1px solid rgba(200,48,42,0.4);
+    color: var(--red); padding: 0.4rem 1rem; border-radius: 100px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+  .hero-h1 {
+    font-family: 'Bebas Neue', 'Oswald', sans-serif; font-size: clamp(2.4rem, 5.4vw, 4.2rem);
+    font-weight: 400; color: var(--white); line-height: 0.98; text-transform: uppercase;
+    letter-spacing: 0.03em; margin-bottom: 1.3rem; max-width: 640px;
+  }
+  .hero-h1 em { color: var(--red); font-style: normal; }
+  .hero-sub {
+    font-size: clamp(0.92rem, 1.4vw, 1.05rem); font-weight: 300; color: rgba(255,255,255,0.8);
+    line-height: 1.65; max-width: 480px; margin-bottom: 2.3rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-primary {
+    font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 600;
+    background: var(--red); color: var(--white); padding: 0.9rem 2rem;
+    border-radius: 4px; text-decoration: none; letter-spacing: 0.04em;
+    text-transform: uppercase; transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,48,42,0.35); }
+  .btn-outline {
+    font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 600;
+    background: transparent; color: var(--white); padding: 0.9rem 2rem;
+    border-radius: 4px; text-decoration: none; letter-spacing: 0.04em;
+    text-transform: uppercase; border: 1.5px solid rgba(255,255,255,0.45);
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+  .hero-meta {
+    display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.82rem; color: rgba(255,255,255,0.65); letter-spacing: 0.05em;
+  }
+  .hero-meta-item svg { opacity: 0.7; flex-shrink: 0; }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: rgba(255,255,255,0.4); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    animation: bounce 2.5s ease infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+  /* MARQUEE */
+  .marquee-section { background: var(--dark); padding: 1.2rem 0; overflow: hidden; }
+  .marquee-track {
+    display: flex; width: max-content;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-item {
+    font-family: 'Oswald', sans-serif; font-size: 0.82rem; font-weight: 500;
+    color: rgba(255,255,255,0.55); letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 0 2.5rem; white-space: nowrap;
+    display: flex; align-items: center; gap: 2.5rem;
+  }
+  .marquee-item::after { content: '—'; color: var(--red); font-weight: 300; }
+
+  /* SECTION UTILITIES */
+  section { position: relative; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .section-label {
+    font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--red);
+    margin-bottom: 0.9rem;
+  }
+  .section-h2 {
+    font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.05;
+  }
+  .section-h2.light { color: var(--white); }
+  .section-h2.dark { color: var(--dark); }
+  .section-p {
+    font-size: 1.05rem; line-height: 1.75; color: #555; max-width: 560px;
+  }
+  .section-p.light { color: rgba(255,255,255,0.7); }
+
+  /* SERVICES */
+  #services { padding: 7rem 0; background: var(--cream); }
+  .services-header { margin-bottom: 3.5rem; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px; padding: 2rem 1.8rem; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    opacity: 0; transform: translateY(30px);
+  }
+  .service-media {
+    margin: -2rem -1.8rem 1.5rem; aspect-ratio: 16 / 10; overflow: hidden;
+    background: var(--dark2);
+  }
+  .service-media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.6s ease; filter: saturate(1.02) contrast(1.02);
+  }
+  .service-card:hover .service-media img { transform: scale(1.05); }
+  .service-card.visible { opacity: 1; transform: translateY(0); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); border-color: var(--red); }
+  .service-icon {
+    width: 48px; height: 48px; background: rgba(200,48,42,0.08);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+  .service-icon svg { color: var(--red); }
+  .service-name {
+    font-family: 'Oswald', sans-serif; font-size: 1.15rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--dark);
+    margin-bottom: 0.7rem;
+  }
+  .service-desc { font-size: 0.92rem; line-height: 1.7; color: #666; }
+
+  /* GALLERY */
+  #gallery { padding: 7rem 0; background: var(--dark); }
+  .gallery-header { margin-bottom: 3rem; }
+  .gallery-grid {
+    column-count: 3;
+    column-gap: 1rem;
+  }
+  .gallery-item {
+    position: relative; overflow: hidden; border-radius: 10px;
+    break-inside: avoid; margin-bottom: 1rem; display: block;
+    opacity: 0; transform: scale(0.97);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .gallery-item.visible { opacity: 1; transform: scale(1); }
+  .gallery-item img {
+    width: 100%; height: auto; display: block;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(11,11,13,0.75) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; align-items: flex-end; padding: 1.5rem;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay span {
+    font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500;
+    color: var(--white); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* CREDENTIALS */
+  #credentials { padding: 7rem 0; background: var(--cream2); }
+  .credentials-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .credentials-img-wrap {
+    position: relative;
+  }
+  .credentials-img-wrap img {
+    width: 100%; height: 480px; object-fit: cover;
+    border-radius: 12px;
+  }
+  .credentials-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--red); color: var(--white); padding: 1.2rem 1.8rem;
+    border-radius: 10px; text-align: center;
+    box-shadow: 0 8px 32px rgba(200,48,42,0.3);
+  }
+  .credentials-badge-num {
+    font-family: 'Oswald', sans-serif; font-size: 2.4rem; font-weight: 700; line-height: 1;
+  }
+  .credentials-badge-label {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.9; margin-top: 0.2rem;
+  }
+  .credentials-list { list-style: none; margin-top: 1.8rem; display: flex; flex-direction: column; gap: 0.9rem; }
+  .credentials-list li {
+    display: flex; align-items: flex-start; gap: 0.9rem;
+    font-size: 0.97rem; line-height: 1.6; color: #444;
+    opacity: 0; transform: translateX(20px); transition: opacity 0.5s, transform 0.5s;
+  }
+  .credentials-list li.visible { opacity: 1; transform: translateX(0); }
+  .credentials-list li::before {
+    content: ''; width: 18px; height: 18px; min-width: 18px;
+    background: var(--red); border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-size: 11px; background-position: center; background-repeat: no-repeat;
+    margin-top: 2px;
+  }
+
+  /* ABOUT */
+  #about { padding: 7rem 0; background: var(--dark); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .about-text-col {}
+  .about-img-col { position: relative; }
+  .about-img-col img {
+    width: 100%; height: 460px; object-fit: cover; border-radius: 12px;
+  }
+  .about-img-accent {
+    position: absolute; top: -1.5rem; left: -1.5rem;
+    width: 120px; height: 120px; background: var(--red);
+    border-radius: 10px; z-index: -1; opacity: 0.7;
+  }
+  .stats-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;
+  }
+  .stat-item { text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px; border: 1px solid var(--border); }
+  .stat-num {
+    font-family: 'Oswald', sans-serif; font-size: 2.4rem; font-weight: 700;
+    color: var(--red); line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem; }
+
+  /* REVIEWS */
+  #reviews { padding: 7rem 0; background: var(--cream); }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;
+  }
+  .review-card {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 14px; padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0; transform: translateY(24px);
+  }
+  .review-card.visible { opacity: 1; transform: translateY(0); }
+  .review-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.09); }
+  .review-stars { display: flex; gap: 3px; margin-bottom: 1rem; }
+  .star { color: #f59e0b; font-size: 1rem; }
+  .review-quote {
+    font-size: 0.97rem; line-height: 1.75; color: #444; font-style: italic;
+    margin-bottom: 1.3rem;
+  }
+  .review-author { font-weight: 600; font-size: 0.9rem; color: var(--dark); }
+  .review-date { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+  /* CONTACT */
+  #contact { padding: 7rem 0; background: var(--dark); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: start;
+  }
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.8rem;
+  }
+  .contact-icon {
+    width: 44px; height: 44px; background: rgba(200,48,42,0.12);
+    border: 1px solid rgba(200,48,42,0.25); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .contact-detail-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+  .contact-detail-val { font-size: 1rem; color: var(--white); font-weight: 500; }
+  .contact-detail-val a { color: var(--white); text-decoration: none; transition: color 0.2s; }
+  .contact-detail-val a:hover { color: var(--red); }
+
+  /* FORM */
+  .form-wrap { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.5rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 0.85rem 1rem; color: var(--white);
+    font-family: 'Barlow', sans-serif; font-size: 0.95rem;
+    transition: border-color 0.2s, background 0.2s; outline: none;
+    appearance: none;
+  }
+  .form-group select option { background: var(--dark2); color: var(--white); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--red); background: rgba(200,48,42,0.06);
+  }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .form-submit-btn {
+    width: 100%; background: var(--red); color: var(--white); border: none;
+    padding: 1rem; border-radius: 8px; font-family: 'Barlow', sans-serif;
+    font-size: 1rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s, transform 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  }
+  .form-submit-btn:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .spinner {
+    width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite;
+    display: none;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .form-success {
+    display: none; text-align: center; padding: 2rem;
+  }
+  .form-success-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .form-success h3 { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: var(--white); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .form-success p { color: var(--text-muted); font-size: 0.95rem; }
+
+  /* FOOTER */
+  footer {
+    background: #000; padding: 4rem 0 2rem;
+  }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-logo {
+    font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600;
+    color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.9rem;
+  }
+  .footer-logo span { color: var(--red); }
+  .footer-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+  .footer-heading {
+    font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600;
+    color: var(--white); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.2rem;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links a { font-size: 0.88rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--red); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06); padding-top: 2rem;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+    gap: 1rem;
+  }
+  .footer-bottom-text { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+  .footer-bottom-text a { color: rgba(255,255,255,0.3); text-decoration: none; }
+  .footer-bottom-text a:hover { color: var(--red); }
+
+  /* SCROLL ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* LOADER LOGO */
+  #loader-logo {
+    width: min(200px, 46vw); height: auto; display: block;
+    filter: drop-shadow(0 12px 32px rgba(0,0,0,0.55));
+    animation: loaderPop 0.9s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  @keyframes loaderPop { from { opacity: 0; transform: scale(0.86); } to { opacity: 1; transform: scale(1); } }
+
+  /* NAV BADGE */
+  .nav-logo { display: flex; align-items: center; gap: 0.7rem; }
+  .nav-logo img { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; }
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.05; }
+  .nav-logo-text small { font-size: 0.6rem; letter-spacing: 0.18em; color: var(--text-muted); font-weight: 400; }
+
+  /* MTA HERO STICKER */
+  .hero-mta {
+    position: absolute; z-index: 3; right: clamp(1.2rem, 4vw, 3.5rem); bottom: clamp(2rem, 6vw, 4rem);
+    display: flex; align-items: center; gap: 0.85rem;
+    background: rgba(11,11,13,0.55); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.14); border-radius: 14px;
+    padding: 0.7rem 1.1rem 0.7rem 0.7rem;
+    animation: mtaFloat 5s ease-in-out infinite;
+  }
+  .hero-mta img { width: 52px; height: 52px; border-radius: 10px; }
+  .hero-mta-txt { line-height: 1.2; }
+  .hero-mta-txt b { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--white); text-transform: uppercase; letter-spacing: 0.04em; display: block; }
+  .hero-mta-txt span { font-size: 0.72rem; color: rgba(255,255,255,0.6); letter-spacing: 0.05em; }
+  @keyframes mtaFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+
+  /* CONTACT ACTION BUTTONS */
+  .contact-actions { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 2.2rem; }
+  .contact-btn {
+    display: flex; align-items: center; justify-content: center; gap: 0.7rem;
+    padding: 1.05rem 1.5rem; border-radius: 10px; font-family: 'Barlow', sans-serif;
+    font-size: 1.02rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase;
+    text-decoration: none; transition: transform 0.2s, background 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .contact-btn svg { flex-shrink: 0; }
+  .contact-btn-call { background: var(--red); color: var(--white); box-shadow: 0 10px 30px rgba(200,48,42,0.3); }
+  .contact-btn-call:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(200,48,42,0.4); }
+  .contact-btn-email { background: rgba(255,255,255,0.05); color: var(--white); border: 1.5px solid rgba(255,255,255,0.22); }
+  .contact-btn-email:hover { background: rgba(255,255,255,0.1); border-color: var(--white); transform: translateY(-2px); }
+
+  /* MAP */
+  .contact-map { position: relative; }
+  .map-frame {
+    width: 100%; height: 100%; min-height: 460px; border: 0; border-radius: 16px;
+    filter: grayscale(0.3) contrast(1.05); display: block;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .map-card {
+    position: absolute; left: 1.2rem; bottom: 1.2rem; right: 1.2rem;
+    background: rgba(11,11,13,0.92); backdrop-filter: blur(10px);
+    border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.2rem;
+    display: flex; align-items: center; gap: 0.9rem;
+  }
+  .map-card svg { color: var(--red); flex-shrink: 0; }
+  .map-card b { font-family: 'Oswald', sans-serif; color: var(--white); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.04em; display: block; }
+  .map-card span { font-size: 0.82rem; color: var(--text-muted); }
+  .map-card a { margin-left: auto; color: var(--red); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; white-space: nowrap; }
+  .map-card a:hover { text-decoration: underline; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { column-count: 2; }
+    .credentials-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .credentials-badge { right: 1rem; bottom: -1rem; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .services-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .gallery-grid { column-count: 1; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { justify-content: center; }
+  }
+  @media (max-width: 760px) {
+    .hero-mta { right: 1rem; bottom: 1.2rem; padding: 0.5rem 0.85rem 0.5rem 0.5rem; }
+    .hero-mta img { width: 40px; height: 40px; }
+    .hero-mta-txt b { font-size: 0.78rem; }
+    .hero-mta-txt span { font-size: 0.65rem; }
+    .map-frame { min-height: 320px; }
+    .nav-logo-text { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img id="loader-logo" src="img/logo.png" alt="Geraldine Auto Restorations Ltd">
+  <div id="loader-sub" style="margin-top:1.4rem;">Geraldine, South Canterbury</div>
+  <div id="loader-bar-wrap"><div id="loader-bar"></div></div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#gallery" onclick="closeMobile()">Gallery</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="review.html">Leave a Review</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <img src="img/logo.png" alt="Geraldine Auto Restorations Ltd">
+    <span class="nav-logo-text">Geraldine Auto <span style="color:var(--red)">Restorations</span><small>Geraldine · South Canterbury</small></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="review.html">Leave a Review</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg active" id="heroBgA" style="background-image:url('img/hero1.jpg')"></div>
+  <div class="hero-bg" id="heroBgB"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-h1">
+      Restoring<br>
+      <em>Every</em> Vehicle<br>
+      To Its Best
+    </h1>
+    <p class="hero-sub">From classic car restorations to modern collision repairs, we deliver precision workmanship that brings your vehicle back to life.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Get a Free Quote
+      </a>
+      <a href="review.html" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Leave a Review
+      </a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Geraldine, South Canterbury
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.44A2 2 0 0 1 3.56 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.89a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        03 693 1401
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Mon-Fri 7:30am - 5:00pm
+      </div>
+    </div>
+  </div>
+  <div class="hero-mta">
+    <img src="img/logo-mta.png" alt="MTA Assured member">
+    <div class="hero-mta-txt">
+      <b>MTA Assured</b>
+      <span>Member you can trust</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    Scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Classic Car Restoration</div>
+    <div class="marquee-item">Panel Beating</div>
+    <div class="marquee-item">Auto Painting</div>
+    <div class="marquee-item">Rust Repair</div>
+    <div class="marquee-item">Chassis Work</div>
+    <div class="marquee-item">Collision Repair</div>
+    <div class="marquee-item">Custom Bodywork</div>
+    <div class="marquee-item">Mechanical Restorations</div>
+    <div class="marquee-item">Classic Car Restoration</div>
+    <div class="marquee-item">Panel Beating</div>
+    <div class="marquee-item">Auto Painting</div>
+    <div class="marquee-item">Rust Repair</div>
+    <div class="marquee-item">Chassis Work</div>
+    <div class="marquee-item">Collision Repair</div>
+    <div class="marquee-item">Custom Bodywork</div>
+    <div class="marquee-item">Mechanical Restorations</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header fade-up">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-h2 dark">Expert Auto Services</h2>
+      <p class="section-p" style="margin-top:1rem;">From full frame-off restorations to precision panel repairs, our Geraldine workshop handles it all with hands-on care and decades of experience.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-media"><img src="img/f05.jpg" alt="Bare metal classic car body on a rotisserie during a full restoration" loading="lazy"></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="service-name">Classic Car Restoration</div>
+        <p class="service-desc">Full frame-off restorations bringing classic and vintage vehicles back to showroom condition. We take the time to get every detail right.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-media"><img src="img/p48.jpg" alt="Panel and body repair on a classic car in primer" loading="lazy"></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="service-name">Panel Beating</div>
+        <p class="service-desc">Skilled panel beating and reshaping to factory specification. Collision damage, dents, and structural deformation repaired with precision.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-media"><img src="img/p17.jpg" alt="Classic car masked up in the spray booth ready for painting" loading="lazy"></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M16.24 7.76a6 6 0 0 1 0 8.49"/></svg>
+        </div>
+        <div class="service-name">Auto Painting</div>
+        <p class="service-desc">High-quality spray painting and colour matching. From full resprays to spot repairs, we deliver a flawless finish that lasts.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-media"><img src="img/p45.jpg" alt="Bare metal bodywork with rust sections cut out and replaced" loading="lazy"></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="service-name">Rust Repair</div>
+        <p class="service-desc">Cut out and replace rust-affected panels and chassis sections. We stop corrosion in its tracks and restore structural integrity.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-media"><img src="img/p25.jpg" alt="Chassis and frame work in the Geraldine workshop" loading="lazy"></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="service-name">Chassis Work</div>
+        <p class="service-desc">Structural repairs and chassis straightening using professional equipment. We restore vehicle geometry and alignment to manufacturer tolerances.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-media"><img src="img/p04.jpg" alt="Custom orange sports car body in primer during fabrication" loading="lazy"></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="service-name">Custom Bodywork</div>
+        <p class="service-desc">Custom fabrication, body modifications, and one-off metalwork. From subtle custom touches to full bespoke body transformations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header fade-up">
+      <div class="section-label" style="color:var(--red)">Our Work</div>
+      <h2 class="section-h2 light">Finished Results</h2>
+      <p class="section-p light" style="margin-top:1rem;">A selection of restorations and repairs completed in our Geraldine workshop.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="img/p36.jpg" alt="Fully restored teal classic Ford" loading="lazy"><div class="gallery-overlay"><span>Classic Ford Restored</span></div></div>
+      <div class="gallery-item"><img src="img/p37.jpg" alt="Restored red hot rod pickup" loading="lazy"><div class="gallery-overlay"><span>Hot Rod Pickup</span></div></div>
+      <div class="gallery-item"><img src="img/f06.jpg" alt="Work on a red Ferrari convertible" loading="lazy"><div class="gallery-overlay"><span>Modern Exotic</span></div></div>
+      <div class="gallery-item"><img src="img/p28.jpg" alt="Restored vintage flatbed truck" loading="lazy"><div class="gallery-overlay"><span>Vintage Truck</span></div></div>
+      <div class="gallery-item"><img src="img/f01.jpg" alt="Craftsman beside a bare metal body in the workshop" loading="lazy"><div class="gallery-overlay"><span>Decades of Craft</span></div></div>
+      <div class="gallery-item"><img src="img/p34.jpg" alt="Restored teal classic car outside the workshop" loading="lazy"><div class="gallery-overlay"><span>Frame-Off Restoration</span></div></div>
+      <div class="gallery-item"><img src="img/f03.jpg" alt="Restored blue leather interior of a classic car" loading="lazy"><div class="gallery-overlay"><span>Interior Detail</span></div></div>
+      <div class="gallery-item"><img src="img/p35.jpg" alt="Restored teal vintage ute" loading="lazy"><div class="gallery-overlay"><span>Restored Ute</span></div></div>
+      <div class="gallery-item"><img src="img/p52.jpg" alt="Vintage hot rod in the Geraldine workshop" loading="lazy"><div class="gallery-overlay"><span>In the Workshop</span></div></div>
+      <div class="gallery-item"><img src="img/f04.jpg" alt="Customer with their finished car outside the workshop" loading="lazy"><div class="gallery-overlay"><span>Handed Back</span></div></div>
+      <div class="gallery-item"><img src="img/p31.jpg" alt="Show-ready restored classic on display" loading="lazy"><div class="gallery-overlay"><span>Show Ready</span></div></div>
+      <div class="gallery-item"><img src="img/p43.jpg" alt="Bare metal classic sedan mid restoration" loading="lazy"><div class="gallery-overlay"><span>Bare Metal Sedan</span></div></div>
+      <div class="gallery-item"><img src="img/f02.jpg" alt="Panel beater at work on a classic body" loading="lazy"><div class="gallery-overlay"><span>Skilled Hands</span></div></div>
+      <div class="gallery-item"><img src="img/p26.jpg" alt="Classic car bodywork in the workshop" loading="lazy"><div class="gallery-overlay"><span>Bodywork</span></div></div>
+      <div class="gallery-item"><img src="img/p10.jpg" alt="Vintage truck cab in primer" loading="lazy"><div class="gallery-overlay"><span>Truck Restoration</span></div></div>
+      <div class="gallery-item"><img src="img/p22.jpg" alt="Panel work on a classic in the workshop" loading="lazy"><div class="gallery-overlay"><span>Panel Work</span></div></div>
+      <div class="gallery-item"><img src="img/p07.jpg" alt="Classic body prepped for the next stage" loading="lazy"><div class="gallery-overlay"><span>Prep Work</span></div></div>
+      <div class="gallery-item"><img src="img/p17.jpg" alt="Classic car masked in the spray booth" loading="lazy"><div class="gallery-overlay"><span>In the Booth</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="container">
+    <div class="credentials-grid">
+      <div class="credentials-img-wrap fade-up">
+        <img src="img/f01.jpg" alt="Craftsman restoring a bare metal classic body at the Geraldine Auto Restorations workshop" loading="lazy">
+        <div class="credentials-badge">
+          <div class="credentials-badge-num">25+</div>
+          <div class="credentials-badge-label">Years in the Trade</div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-h2 dark">Built on Skill and Reputation</h2>
+        <p class="section-p" style="margin-top:1rem;">Wayne and the team at Geraldine Auto Restorations have been the go-to workshop for restoration and repair work across South Canterbury for over two decades.</p>
+        <ul class="credentials-list">
+          <li>Professional spray booth for flawless paint finishes</li>
+          <li>Frame and chassis straightening equipment</li>
+          <li>Classic, vintage, and modern vehicle expertise</li>
+          <li>Computerised colour matching for perfect blends</li>
+          <li>Fully equipped fabrication and metalwork shop</li>
+          <li>Insurance work accepted and managed</li>
+          <li>Trusted by South Canterbury car enthusiasts and collectors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text-col fade-up">
+        <div class="section-label" style="color:var(--red)">Our Story</div>
+        <h2 class="section-h2 light">Geraldine Through and Through</h2>
+        <p class="section-p light" style="margin-top:1.2rem;">Geraldine Auto Restorations Ltd is a proudly local business, built on honest workmanship and a genuine passion for vehicles. Wayne started the business with a simple goal: to deliver the kind of restoration and repair work that stands the test of time.</p>
+        <p class="section-p light" style="margin-top:1rem;">Nestled in the heart of South Canterbury, our workshop has become a destination for classic car owners, enthusiasts, and everyday motorists who want the job done properly. We treat every vehicle as if it were our own.</p>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-num">25+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">500+</div>
+            <div class="stat-label">Vehicles Restored</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Local Business</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-img-col fade-up">
+        <div class="about-img-accent"></div>
+        <img src="img/f08.jpg" alt="The Geraldine Auto Restorations team with a restored classic convertible">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; max-width:600px; margin:0 auto 1rem;">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-h2 dark">What Our Customers Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-quote">"Wayne and the team did an absolutely outstanding job restoring our 1967 Mustang. The attention to detail was incredible and the paint finish is flawless. Worth every penny."</p>
+        <div class="review-author">John R.</div>
+        <div class="review-date">South Canterbury</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-quote">"Brought my car in after a collision and couldn't be happier with the result. The panel work is seamless and the colour match is perfect. Highly recommend Geraldine Auto Restorations."</p>
+        <div class="review-author">Sarah M.</div>
+        <div class="review-date">Geraldine</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-quote">"Professional, knowledgeable, and genuinely passionate about their work. Wayne took the time to explain everything and kept us updated throughout the restoration. Will be back."</p>
+        <div class="review-author">Mike T.</div>
+        <div class="review-date">Timaru</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="review.html" class="btn-primary" style="display:inline-flex;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Leave Your Review
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <div class="section-label" style="color:var(--red)">Get in Touch</div>
+        <h2 class="section-h2 light">Let's Talk About Your Vehicle</h2>
+        <p class="section-p light" style="margin-top:1.2rem;">Ready to start your restoration or need a quote on repair work? Call Wayne and the team, or send an email and we'll get back to you.</p>
+
+        <div style="margin-top:2.2rem;">
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.44A2 2 0 0 1 3.56 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.89a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-val"><a href="tel:+6436931401">03 693 1401</a></div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Location</div>
+              <div class="contact-detail-val">Geraldine, South Canterbury</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Hours</div>
+              <div class="contact-detail-val">Monday - Friday: 7:30am - 5:00pm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a href="tel:+6436931401" class="contact-btn contact-btn-call">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.44A2 2 0 0 1 3.56 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.89a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+            Call 03 693 1401
+          </a>
+          <a href="#" class="contact-btn contact-btn-email" data-gmail
+             data-user="wayne" data-domain="geraldineautorestorations.co.nz"
+             data-su="Restoration%20enquiry%20-%20Geraldine%20Auto%20Restorations"
+             data-body="Hi%20Wayne%2C%0A%0AI%27d%20like%20to%20talk%20about%20some%20work%20on%20my%20vehicle%3A%0A%0AVehicle%20(make%2C%20model%2C%20year)%3A%20%0AWhat%20I%20need%3A%20%0A%0AName%3A%20%0APhone%3A%20">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Us for a Quote
+          </a>
+        </div>
+      </div>
+
+      <div class="fade-up contact-map">
+        <iframe class="map-frame" src="https://www.google.com/maps?q=Geraldine%20Auto%20Restorations%20Ltd%2C%20Geraldine%2C%20New%20Zealand&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Geraldine Auto Restorations location map"></iframe>
+        <div class="map-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <b>Geraldine Auto Restorations</b>
+            <span>Geraldine, South Canterbury</span>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Geraldine%20Auto%20Restorations%20Ltd%20Geraldine" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Geraldine Auto <span>Restorations</span> Ltd</div>
+        <p class="footer-desc">Expert vehicle restoration, panel beating, and automotive services in the heart of South Canterbury. Proudly serving Geraldine and surrounding areas.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Classic Car Restoration</a></li>
+          <li><a href="#services">Panel Beating</a></li>
+          <li><a href="#services">Auto Painting</a></li>
+          <li><a href="#services">Rust Repair</a></li>
+          <li><a href="#services">Chassis Work</a></li>
+          <li><a href="#services">Custom Bodywork</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="review.html">Leave a Review</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">
+        &copy; 2025 Geraldine Auto Restorations Ltd. All rights reserved.
+      </div>
+      <div class="footer-bottom-text">
+        Website by <a href="https://scaleds.co.nz" target="_blank">Scaled Solutions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // HERO ROTATION — smooth crossfade between two stacked layers
+  (function(){
+    var layers=[document.getElementById('heroBgA'),document.getElementById('heroBgB')];
+    if(!layers[0]||!layers[1])return;
+    var imgs=['img/hero1.jpg','img/hero2.jpg','img/hero3.jpg','img/hero4.jpg','img/hero5.jpg','img/hero6.jpg'];
+    imgs.forEach(function(s){var im=new Image();im.src=s;});
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var cur=0, li=0;
+    setInterval(function(){
+      var next=(cur+1)%imgs.length;
+      var nl=(li+1)%2;
+      layers[nl].style.backgroundImage="url('"+imgs[next]+"')";
+      void layers[nl].offsetWidth; // reflow so the fade + zoom run
+      layers[nl].classList.add('active');
+      layers[li].classList.remove('active');
+      li=nl; cur=next;
+    },6500);
+  })();
+
+  // LOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 1350);
+  });
+
+  // NAV SCROLL
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // MOBILE MENU
+  function toggleMobile() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+    document.getElementById('hamburger').classList.toggle('open');
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  // INTERSECTION OBSERVER
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        if (el.classList.contains('service-card') || el.classList.contains('review-card')) {
+          const siblings = el.parentElement.querySelectorAll('.service-card, .review-card');
+          siblings.forEach((s, idx) => {
+            setTimeout(() => s.classList.add('visible'), idx * 100);
+          });
+        } else {
+          setTimeout(() => el.classList.add('visible'), 80);
+        }
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up, .service-card, .gallery-item, .review-card, .credentials-list li').forEach(el => observer.observe(el));
+
+  // GMAIL COMPOSE (no literal email in the HTML)
+  document.querySelectorAll('a[data-gmail]').forEach(function(a){
+    var to = a.getAttribute('data-user') + '@' + a.getAttribute('data-domain');
+    var su = a.getAttribute('data-su') || '';
+    var body = a.getAttribute('data-body') || '';
+    a.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to) + '&su=' + su + '&body=' + body;
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+</script>
+</body>
+</html>
