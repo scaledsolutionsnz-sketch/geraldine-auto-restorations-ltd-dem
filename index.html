@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Geraldine Auto Restorations Ltd | Classic & Modern Vehicle Restoration</title>
-<meta name="description" content="Geraldine Auto Restorations Ltd — expert vehicle restoration, panel beating, and automotive services in Geraldine, South Canterbury.">
+<meta name="description" content="Geraldine Auto Restorations Ltd, expert vehicle restoration, panel beating, and automotive services in Geraldine, South Canterbury.">
 <link rel="icon" type="image/png" href="img/logo.png">
 <meta property="og:title" content="Geraldine Auto Restorations Ltd">
 <meta property="og:description" content="Classic and modern vehicle restoration, panel beating and paint in Geraldine, South Canterbury.">
@@ -154,7 +154,7 @@
     text-transform: uppercase; transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     display: inline-flex; align-items: center; gap: 0.5rem;
   }
-  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,48,42,0.35); }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
   .btn-outline {
     font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 600;
     background: transparent; color: var(--white); padding: 0.9rem 2rem;
@@ -194,7 +194,7 @@
     padding: 0 2.5rem; white-space: nowrap;
     display: flex; align-items: center; gap: 2.5rem;
   }
-  .marquee-item::after { content: '—'; color: var(--red); font-weight: 300; }
+  .marquee-item::after { content: '\002022'; color: var(--red); font-weight: 300; }
 
   /* SECTION UTILITIES */
   section { position: relative; }
@@ -283,6 +283,96 @@
   }
 
   /* CREDENTIALS */
+  /* BEFORE & AFTER PEEL */
+  #transformations { padding: 7rem 0; background: var(--cream); }
+  .peel-header { margin-bottom: 3.2rem; }
+  .peel-hint {
+    display: inline-flex; align-items: center; gap: 0.55rem; margin-top: 1.4rem;
+    font-family: 'Barlow', sans-serif; font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.06em; color: var(--red);
+  }
+  .peel-hint svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .peel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+  .peel-card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 34px rgba(0,0,0,0.10); }
+  .peel-stage {
+    position: relative; aspect-ratio: 4/3; overflow: hidden;
+    perspective: 1500px; background: var(--dark2);
+    cursor: grab; touch-action: pan-y; user-select: none;
+  }
+  .peel-stage:active { cursor: grabbing; }
+  .peel-stage img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+  .peel-after { position: absolute; inset: 0; }
+  .peel-page {
+    position: absolute; inset: 0; transform-origin: left center;
+    transform: rotateY(0deg); transform-style: preserve-3d;
+    will-change: transform; backface-visibility: hidden;
+    box-shadow: 6px 0 22px rgba(0,0,0,0.4);
+  }
+  .peel-page.glide { transition: transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+  .peel-shade {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.45) 88%, rgba(0,0,0,0.62) 100%);
+  }
+  .peel-tag {
+    position: absolute; top: 0.85rem; z-index: 4;
+    font-family: 'Barlow', sans-serif; font-size: 0.66rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--white);
+    background: rgba(11,11,13,0.72); padding: 0.34rem 0.7rem; border-radius: 2px;
+    backdrop-filter: blur(6px);
+  }
+  .peel-tag.is-before { left: 0.85rem; }
+  .peel-tag.is-after { right: 0.85rem; background: rgba(200,48,42,0.9); }
+  .peel-range {
+    position: absolute; left: 6%; right: 6%; bottom: 0.9rem; z-index: 5;
+    width: 88%; margin: 0; appearance: none; height: 4px; border-radius: 4px;
+    background: rgba(255,255,255,0.35); cursor: grab;
+  }
+  .peel-range::-webkit-slider-thumb {
+    appearance: none; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--white); border: 3px solid var(--red); cursor: grab;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+  }
+  .peel-range::-moz-range-thumb {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--white); border: 3px solid var(--red); cursor: grab;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+  }
+  .peel-cap { padding: 1rem 1.2rem 1.15rem; }
+  .peel-cap h3 {
+    font-family: 'Oswald', sans-serif; font-size: 1.05rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.02em; color: var(--dark);
+  }
+  .peel-cap p { font-size: 0.86rem; color: #666; margin-top: 0.2rem; }
+  @media (max-width: 980px) { .peel-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .peel-grid { grid-template-columns: 1fr; } }
+
+  /* PRIZE WINNERS */
+  #prizes { padding: 7rem 0; background: var(--dark); }
+  .prize-header { margin-bottom: 3.2rem; }
+  .prize-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+  .prize-card {
+    background: var(--dark2); border: 1px solid var(--border); border-radius: 4px;
+    overflow: hidden; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.4s;
+  }
+  .prize-card:hover { transform: translateY(-6px); border-color: rgba(200,48,42,0.55); }
+  .prize-media { position: relative; overflow: hidden; background: var(--dark3); }
+  .prize-media img { width: 100%; height: auto; display: block; transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+  .prize-card:hover .prize-media img { transform: scale(1.03); }
+  .prize-body { padding: 1.3rem 1.4rem 1.5rem; border-top: 1px solid var(--border); }
+  .prize-award {
+    display: inline-block; font-family: 'Barlow', sans-serif; font-size: 0.66rem;
+    font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--white); background: var(--red); padding: 0.32rem 0.7rem;
+    border-radius: 2px; margin-bottom: 0.75rem;
+  }
+  .prize-body h3 {
+    font-family: 'Oswald', sans-serif; font-size: 1.12rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.02em; color: var(--white);
+  }
+  .prize-owner { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.3rem; }
+  @media (max-width: 980px) { .prize-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .prize-grid { grid-template-columns: 1fr; } }
+
   #credentials { padding: 7rem 0; background: var(--cream2); }
   .credentials-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
@@ -298,7 +388,7 @@
     position: absolute; bottom: -1.5rem; right: -1.5rem;
     background: var(--red); color: var(--white); padding: 1.2rem 1.8rem;
     border-radius: 10px; text-align: center;
-    box-shadow: 0 8px 32px rgba(200,48,42,0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
   }
   .credentials-badge-num {
     font-family: 'Oswald', sans-serif; font-size: 2.4rem; font-weight: 700; line-height: 1;
@@ -494,8 +584,8 @@
     text-decoration: none; transition: transform 0.2s, background 0.2s, box-shadow 0.2s, border-color 0.2s;
   }
   .contact-btn svg { flex-shrink: 0; }
-  .contact-btn-call { background: var(--red); color: var(--white); box-shadow: 0 10px 30px rgba(200,48,42,0.3); }
-  .contact-btn-call:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(200,48,42,0.4); }
+  .contact-btn-call { background: var(--red); color: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+  .contact-btn-call:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.45); }
   .contact-btn-email { background: rgba(255,255,255,0.05); color: var(--white); border: 1.5px solid rgba(255,255,255,0.22); }
   .contact-btn-email:hover { background: rgba(255,255,255,0.1); border-color: var(--white); transform: translateY(-2px); }
 
@@ -562,6 +652,8 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services" onclick="closeMobile()">Services</a>
   <a href="#gallery" onclick="closeMobile()">Gallery</a>
+        <a href="#transformations" onclick="closeMobile()">Before & After</a>
+        <a href="#prizes" onclick="closeMobile()">Awards</a>
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="#reviews" onclick="closeMobile()">Reviews</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
@@ -576,7 +668,9 @@
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#gallery">Gallery</a>
+        <a href="#transformations">Before & After</a>
+        <a href="#prizes">Awards</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="review.html">Leave a Review</a></li>
@@ -752,6 +846,145 @@
 </section>
 
 <!-- CREDENTIALS -->
+<!-- BEFORE & AFTER -->
+<section id="transformations">
+  <div class="container">
+    <div class="peel-header fade-up">
+      <div class="section-label">Before &amp; After</div>
+      <h2 class="section-h2 dark">Turn Back The Years</h2>
+      <p class="section-p" style="margin-top:1rem;">Every one of these came to us in the state on the left. Drag across each photo to turn the page back and see where it started.</p>
+      <span class="peel-hint">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l-5 7 5 7"/><path d="M3 12h13a5 5 0 0 0 5-5V5"/></svg>
+        Drag any photo to peel it back
+      </span>
+    </div>
+    <div class="peel-grid">
+
+      <div class="peel-card fade-up">
+        <div class="peel-stage">
+          <img class="peel-after" src="img/resto1-after.jpg" alt="The restored Bedford flatbed truck finished in yellow and black" loading="lazy">
+          <div class="peel-page">
+            <img src="img/resto1-before.jpg" alt="The Bedford truck as it arrived, dusty and stripped in the shed">
+            <div class="peel-shade"></div>
+          </div>
+          <span class="peel-tag is-before">Before</span>
+          <span class="peel-tag is-after">After</span>
+          <input class="peel-range" type="range" min="0" max="100" value="0" aria-label="Peel back the Bedford truck restoration">
+        </div>
+        <div class="peel-cap"><h3>Bedford Flatbed</h3><p>Barn find to show-ready working truck.</p></div>
+      </div>
+
+      <div class="peel-card fade-up">
+        <div class="peel-stage">
+          <img class="peel-after" src="img/resto2-after.jpg" alt="The finished green single-seater racing car on display" loading="lazy">
+          <div class="peel-page">
+            <img src="img/resto2-before.jpg" alt="The single-seater as a bare aluminium body and tube frame on stands">
+            <div class="peel-shade"></div>
+          </div>
+          <span class="peel-tag is-before">Before</span>
+          <span class="peel-tag is-after">After</span>
+          <input class="peel-range" type="range" min="0" max="100" value="0" aria-label="Peel back the single-seater restoration">
+        </div>
+        <div class="peel-cap"><h3>Single-Seater Racer</h3><p>Bare frame and panel work through to finished livery.</p></div>
+      </div>
+
+      <div class="peel-card fade-up">
+        <div class="peel-stage">
+          <img class="peel-after" src="img/resto3-after.jpg" alt="The restored 1936 Vauxhall DX finished in deep green" loading="lazy">
+          <div class="peel-page">
+            <img src="img/resto3-before.jpg" alt="The Vauxhall DX before restoration, faded paint and surface rust">
+            <div class="peel-shade"></div>
+          </div>
+          <span class="peel-tag is-before">Before</span>
+          <span class="peel-tag is-after">After</span>
+          <input class="peel-range" type="range" min="0" max="100" value="0" aria-label="Peel back the Vauxhall DX restoration">
+        </div>
+        <div class="peel-cap"><h3>1936 Vauxhall DX</h3><p>Best English Pre 1940 winner, start to finish.</p></div>
+      </div>
+
+      <div class="peel-card fade-up">
+        <div class="peel-stage">
+          <img class="peel-after" src="img/resto4-after.jpg" alt="The finished candy red Ford pickup on chrome wheels" loading="lazy">
+          <div class="peel-page">
+            <img src="img/resto4-before.jpg" alt="The Ford pickup cab and chassis on a trailer before work began">
+            <div class="peel-shade"></div>
+          </div>
+          <span class="peel-tag is-before">Before</span>
+          <span class="peel-tag is-after">After</span>
+          <input class="peel-range" type="range" min="0" max="100" value="0" aria-label="Peel back the Ford pickup restoration">
+        </div>
+        <div class="peel-cap"><h3>Ford Pickup</h3><p>Rolling shell to deep red paint and polished trim.</p></div>
+      </div>
+
+      <div class="peel-card fade-up">
+        <div class="peel-stage">
+          <img class="peel-after" src="img/resto5-after.jpg" alt="The finished red Ford Falcon with white roof and gold stripes" loading="lazy">
+          <div class="peel-page">
+            <img src="img/resto5-before.jpg" alt="The Falcon in bare metal and primer inside the paint booth">
+            <div class="peel-shade"></div>
+          </div>
+          <span class="peel-tag is-before">Before</span>
+          <span class="peel-tag is-after">After</span>
+          <input class="peel-range" type="range" min="0" max="100" value="0" aria-label="Peel back the Ford Falcon restoration">
+        </div>
+        <div class="peel-cap"><h3>Ford Falcon</h3><p>Stripped to bare metal, back in full colour.</p></div>
+      </div>
+
+      <div class="peel-card fade-up">
+        <div class="peel-stage">
+          <img class="peel-after" src="img/resto6-after.jpg" alt="The finished red Ford Cortina in the workshop" loading="lazy">
+          <div class="peel-page">
+            <img src="img/resto6-before.jpg" alt="The Cortina part-stripped with panels in filler on the hoist">
+            <div class="peel-shade"></div>
+          </div>
+          <span class="peel-tag is-before">Before</span>
+          <span class="peel-tag is-after">After</span>
+          <input class="peel-range" type="range" min="0" max="100" value="0" aria-label="Peel back the Ford Cortina restoration">
+        </div>
+        <div class="peel-cap"><h3>Ford Cortina</h3><p>Panel repairs and a full respray in factory red.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRIZE WINNERS -->
+<section id="prizes">
+  <div class="container">
+    <div class="prize-header fade-up">
+      <div class="section-label" style="color:var(--red)">Prize Winning</div>
+      <h2 class="section-h2 light">Trophies On The Lawn</h2>
+      <p class="section-p light" style="margin-top:1rem;">Cars out of our Geraldine workshop have taken class honours at the Beach Hop awards. Here are a few of the recent ones.</p>
+    </div>
+    <div class="prize-grid">
+      <div class="prize-card fade-up">
+        <div class="prize-media"><img src="img/prize-a.jpg" alt="The 1936 Vauxhall DX and its Best English Pre 1940 award presentation" loading="lazy"></div>
+        <div class="prize-body">
+          <span class="prize-award">Best English Pre 1940</span>
+          <h3>1936 Vauxhall DX</h3>
+          <p class="prize-owner">Eddie Bloomfield</p>
+        </div>
+      </div>
+      <div class="prize-card fade-up">
+        <div class="prize-media"><img src="img/prize-b.jpg" alt="The yellow 1972 Datsun 240Z and its Best Japanese Vehicle award presentation" loading="lazy"></div>
+        <div class="prize-body">
+          <span class="prize-award">Best Japanese Vehicle</span>
+          <h3>1972 Datsun 240Z</h3>
+          <p class="prize-owner">Conrad Van Der Geest</p>
+        </div>
+      </div>
+      <div class="prize-card fade-up">
+        <div class="prize-media"><img src="img/prize-c.jpg" alt="The red 1935 Ford pickup and its Best Vintage Pre 1940 award presentation" loading="lazy"></div>
+        <div class="prize-body">
+          <span class="prize-award">The Breeze Best Vintage Pre 1940</span>
+          <h3>1935 Ford Pick Up</h3>
+          <p class="prize-owner">Andrew Town</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="credentials">
   <div class="container">
     <div class="credentials-grid">
@@ -946,7 +1179,9 @@
         <div class="footer-heading">Quick Links</div>
         <ul class="footer-links">
           <li><a href="#about">About Us</a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#gallery">Gallery</a>
+        <a href="#transformations">Before & After</a>
+        <a href="#prizes">Awards</a></li>
           <li><a href="#reviews">Reviews</a></li>
           <li><a href="review.html">Leave a Review</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -1028,6 +1263,69 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.fade-up, .service-card, .gallery-item, .review-card, .credentials-list li').forEach(el => observer.observe(el));
+
+  // BEFORE & AFTER PAGE-TURN PEEL
+  (function(){
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.peel-stage').forEach(function(stage){
+      var page  = stage.querySelector('.peel-page');
+      var shade = stage.querySelector('.peel-shade');
+      var range = stage.querySelector('.peel-range');
+      if(!page || !range) return;
+      var nudged = false;
+
+      function paint(pct){
+        var p = Math.max(0, Math.min(100, pct));
+        page.style.transform = 'rotateY(' + (-p * 1.68) + 'deg)';
+        if(shade) shade.style.opacity = (p / 100) * 0.85;
+        range.value = p;
+      }
+      function set(pct, glide){
+        page.classList.toggle('glide', !!glide);
+        paint(pct);
+      }
+
+      range.addEventListener('input', function(){ set(+range.value, false); });
+
+      // drag straight across the photo
+      var dragging = false;
+      function pctFromX(clientX){
+        var r = stage.getBoundingClientRect();
+        return ((clientX - r.left) / r.width) * 100;
+      }
+      stage.addEventListener('pointerdown', function(e){
+        if(e.target === range) return;
+        dragging = true;
+        stage.setPointerCapture(e.pointerId);
+        set(pctFromX(e.clientX), false);
+      });
+      stage.addEventListener('pointermove', function(e){
+        if(!dragging) return;
+        set(pctFromX(e.clientX), false);
+      });
+      ['pointerup','pointercancel'].forEach(function(ev){
+        stage.addEventListener(ev, function(){
+          if(!dragging) return;
+          dragging = false;
+          // settle to whichever edge is closer, like a page falling shut or open
+          set(+range.value > 50 ? 100 : 0, true);
+        });
+      });
+
+      // one gentle nudge when it scrolls into view so people know it turns
+      if(!reduce && 'IntersectionObserver' in window){
+        new IntersectionObserver(function(entries, obs){
+          entries.forEach(function(en){
+            if(!en.isIntersecting || nudged) return;
+            nudged = true;
+            setTimeout(function(){ set(15, true); }, 420);
+            setTimeout(function(){ set(0, true); }, 1350);
+            obs.unobserve(en.target);
+          });
+        }, { threshold: 0.35 }).observe(stage);
+      }
+    });
+  })();
 
   // GMAIL COMPOSE (no literal email in the HTML)
   document.querySelectorAll('a[data-gmail]').forEach(function(a){
