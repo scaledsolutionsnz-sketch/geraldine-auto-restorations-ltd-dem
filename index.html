@@ -272,6 +272,8 @@
     border-radius: 10px;
     overflow: hidden;
   }
+  /* 14 tiles: close the last row so no cell is left empty */
+  .gallery-item:nth-last-child(-n+2) { grid-column: span 2; }
   .gallery-item {
     position: relative; overflow: hidden; display: block;
     opacity: 0; transform: scale(0.97);
@@ -638,6 +640,8 @@
   @media (max-width: 900px) {
     .services-grid { grid-template-columns: 1fr 1fr; }
     .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 180px; }
+    .gallery-item:nth-last-child(-n+2) { grid-column: span 1; }
+    .gallery-item:last-child { grid-column: span 2; }
     .credentials-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .reviews-grid { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -650,6 +654,7 @@
     .service-media-strip { grid-template-columns: repeat(2, 1fr); }
     .reviews-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+    .gallery-item:nth-last-child(-n+2), .gallery-item:last-child { grid-column: span 1; }
     .footer-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -867,10 +872,8 @@
       <div class="gallery-item"><img src="img/p37.jpg" alt="Custom candy red pickup restored and painted in the Geraldine workshop" loading="lazy"><div class="gallery-overlay"><span>Custom Pick Up</span></div></div>
       <div class="gallery-item"><img src="img/f06.jpg" alt="Work on a red Ferrari convertible" loading="lazy"><div class="gallery-overlay"><span>Modern Exotic</span></div></div>
       <div class="gallery-item"><img src="img/p28.jpg" alt="Restored 1940s Ford pickup with its matching trailer" loading="lazy"><div class="gallery-overlay"><span>40s Ford Truck</span></div></div>
-      <div class="gallery-item"><img src="img/f01.jpg" alt="Craftsman beside a bare metal body in the workshop" loading="lazy"><div class="gallery-overlay"><span>Decades of Craft</span></div></div>
       <div class="gallery-item"><img src="img/f03.jpg" alt="Restored blue leather interior of a classic car" loading="lazy"><div class="gallery-overlay"><span>Interior Detail</span></div></div>
       <div class="gallery-item"><img src="img/p52.jpg" alt="Vintage hot rod in the Geraldine workshop" loading="lazy"><div class="gallery-overlay"><span>In the Workshop</span></div></div>
-      <div class="gallery-item"><img src="img/f04.jpg" alt="Customer with their finished car outside the workshop" loading="lazy"><div class="gallery-overlay"><span>Handed Back</span></div></div>
       <div class="gallery-item"><img src="img/p31.jpg" alt="Show-ready restored classic on display" loading="lazy"><div class="gallery-overlay"><span>Show Ready</span></div></div>
       <div class="gallery-item"><img src="img/p43.jpg" alt="Bare metal classic coupe mid restoration" loading="lazy"><div class="gallery-overlay"><span>Bare Metal Coupe</span></div></div>
       <div class="gallery-item"><img src="img/f02.jpg" alt="Panel beater at work on a classic body" loading="lazy"><div class="gallery-overlay"><span>Skilled Hands</span></div></div>
