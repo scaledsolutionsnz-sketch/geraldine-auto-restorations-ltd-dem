@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Geraldine Auto Restorations Ltd | Classic & Modern Vehicle Restoration</title>
-<meta name="description" content="Geraldine Auto Restorations Ltd, expert vehicle restoration, panel beating, and automotive services in Geraldine, South Canterbury.">
+<meta name="description" content="Geraldine Auto Restorations Ltd, 34 High Street, Geraldine 7930. Expert vehicle restoration, panel beating, mechanical services and WOFs in South Canterbury.">
 <link rel="icon" type="image/png" href="img/logo.png">
 <meta property="og:title" content="Geraldine Auto Restorations Ltd">
-<meta property="og:description" content="Classic and modern vehicle restoration, panel beating and paint in Geraldine, South Canterbury.">
+<meta property="og:description" content="Classic and modern vehicle restoration, panel beating, paint and mechanical services. 34 High Street, Geraldine 7930.">
 <meta property="og:image" content="img/hero1.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -168,10 +168,10 @@
     display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
   }
   .hero-meta-item {
-    display: flex; align-items: center; gap: 0.5rem;
-    font-size: 0.82rem; color: rgba(255,255,255,0.65); letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 1.02rem; font-weight: 500; color: rgba(255,255,255,0.9); letter-spacing: 0.03em;
   }
-  .hero-meta-item svg { opacity: 0.7; flex-shrink: 0; }
+  .hero-meta-item svg { opacity: 0.85; flex-shrink: 0; }
   .hero-scroll {
     position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
@@ -231,6 +231,16 @@
     margin: -2rem -1.8rem 1.5rem; aspect-ratio: 16 / 10; overflow: hidden;
     background: var(--dark2);
   }
+  .service-card--wide { grid-column: 1 / -1; }
+  .service-media-strip {
+    margin: -2rem -1.8rem 1.5rem; display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; background: var(--dark2); overflow: hidden;
+  }
+  .service-media-strip img {
+    width: 100%; height: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block;
+    transition: transform 0.6s ease; filter: saturate(1.02) contrast(1.02);
+  }
+  .service-card--wide:hover .service-media-strip img { transform: scale(1.05); }
   .service-media img {
     width: 100%; height: 100%; object-fit: cover; display: block;
     transition: transform 0.6s ease; filter: saturate(1.02) contrast(1.02);
@@ -267,7 +277,6 @@
     opacity: 0; transform: scale(0.97);
     transition: opacity 0.6s, transform 0.6s;
   }
-  .gallery-item:nth-child(1), .gallery-item:nth-child(10) { grid-column: span 2; }
   .gallery-item.visible { opacity: 1; transform: scale(1); }
   .gallery-item img {
     width: 100%; height: 100%; object-fit: cover; display: block;
@@ -353,7 +362,7 @@
   /* PRIZE WINNERS */
   #prizes { padding: 7rem 0; background: var(--dark); }
   .prize-header { margin-bottom: 3.2rem; }
-  .prize-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+  .prize-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; max-width: 900px; margin: 0 auto; }
   .prize-card {
     background: var(--dark2); border: 1px solid var(--border); border-radius: 4px;
     overflow: hidden; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.4s;
@@ -374,7 +383,6 @@
     text-transform: uppercase; letter-spacing: 0.02em; color: var(--white);
   }
   .prize-owner { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.3rem; }
-  @media (max-width: 980px) { .prize-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 620px) { .prize-grid { grid-template-columns: 1fr; } }
 
   #credentials { padding: 7rem 0; background: var(--cream2); }
@@ -462,6 +470,14 @@
   }
   .review-author { font-weight: 600; font-size: 0.9rem; color: var(--dark); }
   .review-date { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+  .google-rating {
+    display: inline-flex; align-items: center; gap: 0.55rem; margin-top: 1rem;
+    text-decoration: none; color: var(--dark); transition: opacity 0.2s;
+  }
+  .google-rating:hover { opacity: 0.72; }
+  .google-rating-score { font-family: 'Oswald', sans-serif; font-size: 1.35rem; font-weight: 700; line-height: 1; }
+  .google-rating-stars { color: #f5a623; font-size: 1.05rem; letter-spacing: 0.06em; line-height: 1; }
+  .google-rating-text { font-size: 0.92rem; color: #5c5c5c; }
 
   /* CONTACT */
   #contact { padding: 7rem 0; background: var(--dark); }
@@ -529,6 +545,12 @@
     color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.9rem;
   }
   .footer-logo span { color: var(--red); }
+  .footer-address {
+    font-style: normal; margin-top: 1rem; font-size: 0.92rem; line-height: 1.7;
+    color: rgba(255,255,255,0.72);
+  }
+  .footer-address a { color: rgba(255,255,255,0.72); text-decoration: none; }
+  .footer-address a:hover { color: var(--red); }
   .footer-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
   .footer-heading {
     font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600;
@@ -616,7 +638,6 @@
   @media (max-width: 900px) {
     .services-grid { grid-template-columns: 1fr 1fr; }
     .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 180px; }
-    .gallery-item:nth-child(1), .gallery-item:nth-child(10) { grid-column: span 1; }
     .credentials-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .reviews-grid { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -626,9 +647,9 @@
     .nav-links { display: none; }
     .hamburger { display: flex; }
     .services-grid { grid-template-columns: 1fr; }
+    .service-media-strip { grid-template-columns: repeat(2, 1fr); }
     .reviews-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
-    .gallery-item:nth-child(1) { grid-column: span 1; }
     .footer-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -650,7 +671,7 @@
 <!-- LOADER -->
 <div id="loader">
   <img id="loader-logo" src="img/logo.png" alt="Geraldine Auto Restorations Ltd">
-  <div id="loader-sub" style="margin-top:1.4rem;">Geraldine, South Canterbury</div>
+  <div id="loader-sub" style="margin-top:1.4rem;">34 High Street, Geraldine</div>
   <div id="loader-bar-wrap"><div id="loader-bar"></div></div>
 </div>
 
@@ -670,7 +691,7 @@
 <nav id="mainNav">
   <a href="#" class="nav-logo">
     <img src="img/logo.png" alt="Geraldine Auto Restorations Ltd">
-    <span class="nav-logo-text">Geraldine Auto <span style="color:var(--red)">Restorations</span><small>Geraldine · South Canterbury</small></span>
+    <span class="nav-logo-text">Geraldine Auto <span style="color:var(--red)">Restorations</span><small>34 High Street, Geraldine</small></span>
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -711,15 +732,15 @@
     </div>
     <div class="hero-meta">
       <div class="hero-meta-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Geraldine, South Canterbury
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        34 High Street, Geraldine 7930
       </div>
       <div class="hero-meta-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.44A2 2 0 0 1 3.56 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.89a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.44A2 2 0 0 1 3.56 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.89a16 16 0 0 0 6.06 6.06l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
         03 693 1401
       </div>
       <div class="hero-meta-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         Mon-Fri 7:30am - 5:00pm
       </div>
     </div>
@@ -765,7 +786,7 @@
     <div class="services-header fade-up">
       <div class="section-label">What We Do</div>
       <h2 class="section-h2 dark">Expert Auto Services</h2>
-      <p class="section-p" style="margin-top:1rem;">From full frame-off restorations to precision panel repairs, our Geraldine workshop handles it all with hands-on care and decades of experience.</p>
+      <p class="section-p" style="margin-top:1rem;">From full body-off restorations to precision panel repairs, our Geraldine workshop handles it all with hands-on care and decades of experience.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
@@ -774,7 +795,7 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
         </div>
         <div class="service-name">Classic Car Restoration</div>
-        <p class="service-desc">Full frame-off restorations bringing classic and vintage vehicles back to showroom condition. We take the time to get every detail right.</p>
+        <p class="service-desc">Full body-off restorations bringing classic and vintage vehicles back to showroom condition. We take the time to get every detail right.</p>
       </div>
       <div class="service-card">
         <div class="service-media"><img src="img/p48.jpg" alt="Panel and body repair on a classic car in primer" loading="lazy"></div>
@@ -816,6 +837,19 @@
         <div class="service-name">Custom Bodywork</div>
         <p class="service-desc">Custom fabrication, body modifications, and one-off metalwork. From subtle custom touches to full bespoke body transformations.</p>
       </div>
+      <div class="service-card service-card--wide">
+        <div class="service-media-strip">
+          <img src="img/mech-engine.jpg" alt="Engine rebuild in progress at Geraldine Auto Restorations, rebuilt engine and driveline fitted to a bare chassis" loading="lazy" width="900" height="563">
+          <img src="img/mech-driveline.jpg" alt="Gearbox stripped down for a driveline rebuild, gears and bearings laid out on the bench" loading="lazy" width="900" height="563">
+          <img src="img/mech-suspension.jpg" alt="Suspension rebuild with new leaf springs, hubs and brake drums laid out beside a restored chassis" loading="lazy" width="900" height="563">
+          <img src="img/mech-brakes.jpg" alt="Brake system rebuild with new master cylinder, servo and hard lines plumbed in" loading="lazy" width="900" height="563">
+        </div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <div class="service-name">Mechanical Services</div>
+        <p class="service-desc">Complete mechanical service including Engine Rebuilds, Driveline, Suspension and Brake systems. WOFs, servicing and general repairs on all vintage, classic, and modern vehicles.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -829,21 +863,19 @@
       <p class="section-p light" style="margin-top:1rem;">A selection of restorations and repairs completed in our Geraldine workshop.</p>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="img/p36.jpg" alt="Fully restored teal classic Ford" loading="lazy"><div class="gallery-overlay"><span>Classic Ford Restored</span></div></div>
-      <div class="gallery-item"><img src="img/p37.jpg" alt="Restored red hot rod pickup" loading="lazy"><div class="gallery-overlay"><span>Hot Rod Pickup</span></div></div>
+      <div class="gallery-item"><img src="img/p36.jpg" alt="Fully restored teal classic Hillman saloon" loading="lazy"><div class="gallery-overlay"><span>Classic Hillman Restored</span></div></div>
+      <div class="gallery-item"><img src="img/p37.jpg" alt="Custom candy red pickup restored and painted in the Geraldine workshop" loading="lazy"><div class="gallery-overlay"><span>Custom Pick Up</span></div></div>
       <div class="gallery-item"><img src="img/f06.jpg" alt="Work on a red Ferrari convertible" loading="lazy"><div class="gallery-overlay"><span>Modern Exotic</span></div></div>
-      <div class="gallery-item"><img src="img/p28.jpg" alt="Restored vintage flatbed truck" loading="lazy"><div class="gallery-overlay"><span>Vintage Truck</span></div></div>
+      <div class="gallery-item"><img src="img/p28.jpg" alt="Restored 1940s Ford pickup with its matching trailer" loading="lazy"><div class="gallery-overlay"><span>40s Ford Truck</span></div></div>
       <div class="gallery-item"><img src="img/f01.jpg" alt="Craftsman beside a bare metal body in the workshop" loading="lazy"><div class="gallery-overlay"><span>Decades of Craft</span></div></div>
-      <div class="gallery-item"><img src="img/p34.jpg" alt="Restored teal classic car outside the workshop" loading="lazy"><div class="gallery-overlay"><span>Frame-Off Restoration</span></div></div>
       <div class="gallery-item"><img src="img/f03.jpg" alt="Restored blue leather interior of a classic car" loading="lazy"><div class="gallery-overlay"><span>Interior Detail</span></div></div>
-      <div class="gallery-item"><img src="img/p35.jpg" alt="Restored teal vintage ute" loading="lazy"><div class="gallery-overlay"><span>Restored Ute</span></div></div>
       <div class="gallery-item"><img src="img/p52.jpg" alt="Vintage hot rod in the Geraldine workshop" loading="lazy"><div class="gallery-overlay"><span>In the Workshop</span></div></div>
       <div class="gallery-item"><img src="img/f04.jpg" alt="Customer with their finished car outside the workshop" loading="lazy"><div class="gallery-overlay"><span>Handed Back</span></div></div>
       <div class="gallery-item"><img src="img/p31.jpg" alt="Show-ready restored classic on display" loading="lazy"><div class="gallery-overlay"><span>Show Ready</span></div></div>
-      <div class="gallery-item"><img src="img/p43.jpg" alt="Bare metal classic sedan mid restoration" loading="lazy"><div class="gallery-overlay"><span>Bare Metal Sedan</span></div></div>
+      <div class="gallery-item"><img src="img/p43.jpg" alt="Bare metal classic coupe mid restoration" loading="lazy"><div class="gallery-overlay"><span>Bare Metal Coupe</span></div></div>
       <div class="gallery-item"><img src="img/f02.jpg" alt="Panel beater at work on a classic body" loading="lazy"><div class="gallery-overlay"><span>Skilled Hands</span></div></div>
-      <div class="gallery-item"><img src="img/p26.jpg" alt="Classic car bodywork in the workshop" loading="lazy"><div class="gallery-overlay"><span>Bodywork</span></div></div>
-      <div class="gallery-item"><img src="img/p10.jpg" alt="Vintage truck cab in primer" loading="lazy"><div class="gallery-overlay"><span>Truck Restoration</span></div></div>
+      <div class="gallery-item"><img src="img/p26.jpg" alt="Fabricated gullwing BBQ trailer built in the Geraldine workshop" loading="lazy"><div class="gallery-overlay"><span>Fabricated Gullwing BBQ Trailer</span></div></div>
+      <div class="gallery-item"><img src="img/p10.jpg" alt="Model A pickup body in primer during restoration" loading="lazy"><div class="gallery-overlay"><span>Model A Pickup</span></div></div>
       <div class="gallery-item"><img src="img/p22.jpg" alt="Panel work on a classic in the workshop" loading="lazy"><div class="gallery-overlay"><span>Panel Work</span></div></div>
       <div class="gallery-item"><img src="img/p07.jpg" alt="Classic body prepped for the next stage" loading="lazy"><div class="gallery-overlay"><span>Prep Work</span></div></div>
       <div class="gallery-item"><img src="img/p17.jpg" alt="Classic car masked in the spray booth" loading="lazy"><div class="gallery-overlay"><span>In the Booth</span></div></div>
@@ -960,17 +992,9 @@
     <div class="prize-header fade-up">
       <div class="section-label" style="color:var(--red)">Prize Winning</div>
       <h2 class="section-h2 light">Trophies On The Lawn</h2>
-      <p class="section-p light" style="margin-top:1rem;">Cars out of our Geraldine workshop have taken class honours at the Beach Hop awards. Here are a few of the recent ones.</p>
+      <p class="section-p light" style="margin-top:1rem;">Cars out of our Geraldine workshop have taken class honours at the Timaru Rock &amp; Hop awards. Here are a few of the recent ones.</p>
     </div>
     <div class="prize-grid">
-      <div class="prize-card fade-up">
-        <div class="prize-media"><img src="img/prize-a.jpg" alt="The 1936 Vauxhall DX and its Best English Pre 1940 award presentation" loading="lazy"></div>
-        <div class="prize-body">
-          <span class="prize-award">Best English Pre 1940</span>
-          <h3>1936 Vauxhall DX</h3>
-          <p class="prize-owner">Eddie Bloomfield</p>
-        </div>
-      </div>
       <div class="prize-card fade-up">
         <div class="prize-media"><img src="img/prize-b.jpg" alt="The yellow 1972 Datsun 240Z and its Best Japanese Vehicle award presentation" loading="lazy"></div>
         <div class="prize-body">
@@ -997,22 +1021,22 @@
       <div class="credentials-img-wrap fade-up">
         <img src="img/f01.jpg" alt="Craftsman restoring a bare metal classic body at the Geraldine Auto Restorations workshop" loading="lazy">
         <div class="credentials-badge">
-          <div class="credentials-badge-num">25+</div>
-          <div class="credentials-badge-label">Years in the Trade</div>
+          <div class="credentials-badge-num">2</div>
+          <div class="credentials-badge-label">Decades in the Trade</div>
         </div>
       </div>
       <div class="fade-up">
         <div class="section-label">Why Choose Us</div>
         <h2 class="section-h2 dark">Built on Skill and Reputation</h2>
-        <p class="section-p" style="margin-top:1rem;">Wayne and the team at Geraldine Auto Restorations have been the go-to workshop for restoration and repair work across South Canterbury for over two decades.</p>
+        <p class="section-p" style="margin-top:1rem;">Wayne and the team at Geraldine Auto Restorations have been the go-to workshop for restoration and repair work for over two decades. Trusted by world wide car enthusiasts and collectors.</p>
         <ul class="credentials-list">
           <li>Professional spray booth for flawless paint finishes</li>
-          <li>Frame and chassis straightening equipment</li>
+          <li>Body Frame and Chassis straightening equipment</li>
           <li>Classic, vintage, and modern vehicle expertise</li>
           <li>Computerised colour matching for perfect blends</li>
-          <li>Fully equipped fabrication and metalwork shop</li>
+          <li>Fully equipped fabrication and mechanical workshops</li>
           <li>Insurance work accepted and managed</li>
-          <li>Trusted by South Canterbury car enthusiasts and collectors</li>
+          <li>Trusted by world wide car enthusiasts and collectors</li>
         </ul>
       </div>
     </div>
@@ -1030,8 +1054,8 @@
         <p class="section-p light" style="margin-top:1rem;">Nestled in the heart of South Canterbury, our workshop has become a destination for classic car owners, enthusiasts, and everyday motorists who want the job done properly. We treat every vehicle as if it were our own.</p>
         <div class="stats-row">
           <div class="stat-item">
-            <div class="stat-num">25+</div>
-            <div class="stat-label">Years Experience</div>
+            <div class="stat-num">2</div>
+            <div class="stat-label">Decades Experience</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">500+</div>
@@ -1057,33 +1081,63 @@
     <div class="fade-up" style="text-align:center; max-width:600px; margin:0 auto 1rem;">
       <div class="section-label">Customer Reviews</div>
       <h2 class="section-h2 dark">What Our Customers Say</h2>
+      <a class="google-rating" href="https://www.google.com/maps/search/?api=1&amp;query=Geraldine%20Auto%20Restorations%20Ltd%2C%2034%20High%20Street%2C%20Geraldine" target="_blank" rel="noopener">
+        <span class="google-rating-score">4.7</span>
+        <span class="google-rating-stars" aria-hidden="true">★★★★★</span>
+        <span class="google-rating-text">from 26 Google reviews</span>
+      </a>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
-        <p class="review-quote">"Wayne and the team did an absolutely outstanding job restoring our 1967 Mustang. The attention to detail was incredible and the paint finish is flawless. Worth every penny."</p>
-        <div class="review-author">John R.</div>
-        <div class="review-date">South Canterbury</div>
+        <p class="review-quote">"Thanks team for getting my ute in so quickly for a WOF. I rang and was booked in for that afternoon. I was even offered a courtesy car to use while I waited. The WOF was done within about half an hour and I was on my way again. Awesome friendly team, highly recommend."</p>
+        <div class="review-author">Kylie Meise</div>
+        <div class="review-date">Google review</div>
       </div>
       <div class="review-card">
         <div class="review-stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
-        <p class="review-quote">"Brought my car in after a collision and couldn't be happier with the result. The panel work is seamless and the colour match is perfect. Highly recommend Geraldine Auto Restorations."</p>
-        <div class="review-author">Sarah M.</div>
-        <div class="review-date">Geraldine</div>
+        <p class="review-quote">"Highly recommend these folks for honest, top-quality mechanic work at fair prices. Paul worked on my '91 Delica (WOF, general service and a few other minor things) and the team went above and beyond to make sure my car was well taken care of."</p>
+        <div class="review-author">Zach</div>
+        <div class="review-date">Google review</div>
       </div>
       <div class="review-card">
         <div class="review-stars">
           <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
-        <p class="review-quote">"Professional, knowledgeable, and genuinely passionate about their work. Wayne took the time to explain everything and kept us updated throughout the restoration. Will be back."</p>
-        <div class="review-author">Mike T.</div>
-        <div class="review-date">Timaru</div>
+        <p class="review-quote">"Pleasant place to bring your car. I was instantly helped with my car issue by a kind, helpful and experienced mechanic."</p>
+        <div class="review-author">Hendrik Drost</div>
+        <div class="review-date">Google review</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-quote">"Cleanest and tidiest workshop I have seen. Very reliable and helpful. Great service."</p>
+        <div class="review-author">Alister Anderson</div>
+        <div class="review-date">Google review</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-quote">"Very helpful in all aspects of the industry, amazing workmanship."</p>
+        <div class="review-author">Michael Fj</div>
+        <div class="review-date">Google review</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-quote">"Great customer service, very accommodating, very friendly! My first time with them for my WOF! Highly recommended!"</p>
+        <div class="review-author">Ludy C</div>
+        <div class="review-date">Google review</div>
       </div>
     </div>
+
     <div style="text-align:center; margin-top:2.5rem;">
       <a href="review.html" class="btn-primary" style="display:inline-flex;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1118,7 +1172,7 @@
             </div>
             <div>
               <div class="contact-detail-label">Location</div>
-              <div class="contact-detail-val">Geraldine, South Canterbury</div>
+              <div class="contact-detail-val">34 High Street, Geraldine 7930, New Zealand</div>
             </div>
           </div>
           <div class="contact-detail">
@@ -1148,12 +1202,12 @@
       </div>
 
       <div class="fade-up contact-map">
-        <iframe class="map-frame" src="https://www.google.com/maps?q=Geraldine%20Auto%20Restorations%20Ltd%2C%20Geraldine%2C%20New%20Zealand&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Geraldine Auto Restorations location map"></iframe>
+        <iframe class="map-frame" src="https://www.google.com/maps?q=34%20High%20Street%2C%20Geraldine%207930%2C%20New%20Zealand&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Geraldine Auto Restorations location map"></iframe>
         <div class="map-card">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <div>
             <b>Geraldine Auto Restorations</b>
-            <span>Geraldine, South Canterbury</span>
+            <span>34 High Street, Geraldine 7930</span>
           </div>
           <a href="https://www.google.com/maps/search/?api=1&query=Geraldine%20Auto%20Restorations%20Ltd%20Geraldine" target="_blank" rel="noopener">Directions</a>
         </div>
@@ -1169,6 +1223,10 @@
       <div>
         <div class="footer-logo">Geraldine Auto <span>Restorations</span> Ltd</div>
         <p class="footer-desc">Expert vehicle restoration, panel beating, and automotive services in the heart of South Canterbury. Proudly serving Geraldine and surrounding areas.</p>
+        <address class="footer-address">
+          34 High Street, Geraldine 7930, New Zealand<br>
+          <a href="tel:+6436931401">03 693 1401</a>
+        </address>
       </div>
       <div>
         <div class="footer-heading">Services</div>
@@ -1179,6 +1237,7 @@
           <li><a href="#services">Rust Repair</a></li>
           <li><a href="#services">Chassis Work</a></li>
           <li><a href="#services">Custom Bodywork</a></li>
+          <li><a href="#services">Mechanical Services</a></li>
         </ul>
       </div>
       <div>
