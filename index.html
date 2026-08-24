@@ -297,6 +297,50 @@
     color: var(--white); letter-spacing: 0.08em; text-transform: uppercase;
   }
 
+  /* MECHANICAL SERVICES */
+  #mechanical { padding: 7rem 0; background: var(--cream2); }
+  .mech-header { margin-bottom: 2.6rem; max-width: 64ch; }
+  .mech-caps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: rgba(11,11,13,0.10);
+    border-top: 1px solid rgba(11,11,13,0.10); border-bottom: 1px solid rgba(11,11,13,0.10);
+    margin-bottom: 3rem;
+  }
+  .mech-cap { background: var(--cream2); padding: 1.5rem 1.4rem 1.6rem; }
+  .mech-cap .mc-ico { color: var(--red); margin-bottom: 0.8rem; display: block; }
+  .mech-cap h3 {
+    font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 0.45rem;
+  }
+  .mech-cap p { font-size: 0.93rem; line-height: 1.6; color: #55555a; }
+  .mech-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 185px; gap: 8px; border-radius: 10px; overflow: hidden;
+  }
+  .mech-item {
+    position: relative; overflow: hidden; display: block; background: var(--dark2);
+    opacity: 0; transform: scale(0.97); transition: opacity 0.6s, transform 0.6s;
+  }
+  .mech-item.visible { opacity: 1; transform: scale(1); }
+  .mech-item--tall { grid-row: span 2; }
+  .mech-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .mech-item:hover img { transform: scale(1.06); }
+  .mech-shade {
+    position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 1.1rem;
+    background: linear-gradient(to top, rgba(11,11,13,0.78) 0%, transparent 58%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .mech-item:hover .mech-shade { opacity: 1; }
+  .mech-shade span {
+    font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 500;
+    color: var(--white); letter-spacing: 0.07em; text-transform: uppercase; line-height: 1.35;
+  }
+  .mech-note {
+    margin-top: 1.9rem; font-size: 0.95rem; color: #55555a;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .mech-note svg { color: var(--red); flex: none; }
+
   /* CREDENTIALS */
   /* BEFORE & AFTER PEEL */
   #transformations { padding: 7rem 0; background: var(--cream); }
@@ -648,12 +692,17 @@
     .credentials-badge { right: 1rem; bottom: -1rem; }
   }
   @media (max-width: 640px) {
+    .mech-caps { grid-template-columns: 1fr; }
+    .mech-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
+    .mech-item--tall { grid-row: span 2; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
     .services-grid { grid-template-columns: 1fr; }
     .service-media-strip { grid-template-columns: repeat(2, 1fr); }
     .reviews-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+    .mech-caps { grid-template-columns: repeat(2, 1fr); }
+    .mech-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 150px; }
     .gallery-item:nth-last-child(-n+2), .gallery-item:last-child { grid-column: span 1; }
     .footer-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
@@ -683,6 +732,7 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#mechanical" onclick="closeMobile()">Mechanical</a>
   <a href="#gallery" onclick="closeMobile()">Gallery</a>
         <a href="#transformations" onclick="closeMobile()">Before & After</a>
         <a href="#prizes" onclick="closeMobile()">Awards</a>
@@ -700,6 +750,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#mechanical">Mechanical</a></li>
     <li><a href="#gallery">Gallery</a>
         <a href="#transformations">Before & After</a>
         <a href="#prizes">Awards</a></li>
@@ -842,6 +893,111 @@
         <div class="service-name">Custom Bodywork</div>
         <p class="service-desc">Custom fabrication, body modifications, and one-off metalwork. From subtle custom touches to full bespoke body transformations.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECHANICAL SERVICES -->
+<section id="mechanical">
+  <div class="container">
+    <div class="mech-header fade-up">
+      <div class="section-label" style="color:var(--red)">Mechanical</div>
+      <h2 class="section-h2 dark">Mechanical Services</h2>
+      <p class="section-p" style="margin-top:1rem;">Not every job through the door is a full restoration. A good part of the work here is mechanical: engines pulled down and rebuilt, gearboxes and diffs done on the bench, suspension and brakes renewed. WOFs, servicing and general repairs on vintage, classic and modern vehicles.</p>
+    </div>
+
+    <div class="mech-caps fade-up">
+      <div class="mech-cap">
+        <svg class="mc-ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v6m0 8v6M4.9 4.9l4.2 4.2m5.8 5.8 4.2 4.2M2 12h6m8 0h6M4.9 19.1l4.2-4.2m5.8-5.8 4.2-4.2"/></svg>
+        <h3>Engine Rebuilds</h3>
+        <p>Stripped down, cleaned back, machined and reassembled. Blocks, heads, timing gear and ancillaries.</p>
+      </div>
+      <div class="mech-cap">
+        <svg class="mc-ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <h3>Driveline &amp; Gearbox</h3>
+        <p>Gearboxes and diffs rebuilt on the bench, bearings and synchros replaced, axles and shafts sorted.</p>
+      </div>
+      <div class="mech-cap">
+        <svg class="mc-ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14M5 21h14M7 3l10 4.5L7 12l10 4.5L7 21"/></svg>
+        <h3>Suspension</h3>
+        <p>Leaf springs, shocks, bushes and hubs rebuilt so the car sits right and drives the way it should.</p>
+      </div>
+      <div class="mech-cap">
+        <svg class="mc-ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M17.7 6.3 14.1 9.9"/></svg>
+        <h3>Brakes</h3>
+        <p>Master cylinders, servos, wheel cylinders and hard lines renewed and bled front to back.</p>
+      </div>
+    </div>
+
+    <div class="mech-grid">
+      <div class="mech-item "><img src="img/ms-v8.jpg" alt="V8 engine rebuilt and mounted on the stand" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>V8 engine rebuilt and mounted on the stand</span></span></div>
+      <div class="mech-item "><img src="img/ms-block-stand.jpg" alt="Cylinder head and block stripped down on the stand" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>Cylinder head and block stripped down on the stand</span></span></div>
+      <div class="mech-item "><img src="img/ms-bare-block.jpg" alt="Bare engine block cleaned back ready for machining" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>Bare engine block cleaned back ready for machining</span></span></div>
+      <div class="mech-item "><img src="img/ms-gearbox.jpg" alt="Gearbox out and up on the hoist for a rebuild" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>Gearbox out and up on the hoist for a rebuild</span></span></div>
+      <div class="mech-item "><img src="img/ms-gearbox-internals.jpg" alt="Gearbox internals, gears and bearings laid out" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>Gearbox internals, gears and bearings laid out</span></span></div>
+      <div class="mech-item "><img src="img/ms-diff.jpg" alt="Diff and axle housing rebuilt and painted" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>Diff and axle housing rebuilt and painted</span></span></div>
+      <div class="mech-item "><img src="img/ms-timing-gears.jpg" alt="Timing gears inside the case during a rebuild" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>Timing gears inside the case during a rebuild</span></span></div>
+      <div class="mech-item "><img src="img/ms-engine-bay.jpg" alt="Engine back in the bay with the loom refitted" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>Engine back in the bay with the loom refitted</span></span></div>
+      <div class="mech-item "><img src="img/ms-brakes.jpg" alt="Master cylinder and servo plumbed in with new hard lines" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>Master cylinder and servo plumbed in with new hard lines</span></span></div>
+      <div class="mech-item "><img src="img/ms-block-bench.jpg" alt="Engine block and head on the bench mid rebuild" loading="lazy" width="1100" height="825"><span class="mech-shade"><span>Engine block and head on the bench mid rebuild</span></span></div>
+    </div>
+
+    <p class="mech-note fade-up">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      All mechanical rebuilds available. Ring the workshop and talk it through with Wayne or Riley.
+    </p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header fade-up">
+      <div class="section-label" style="color:var(--red)">Our Work</div>
+      <h2 class="section-h2 light">Finished Results</h2>
+      <p class="section-p light" style="margin-top:1rem;">A selection of restorations and repairs completed in our Geraldine workshop.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="img/p36.jpg" alt="Fully restored teal classic Hillman saloon" loading="lazy"><div class="gallery-overlay"><span>Classic Hillman Restored</span></div></div>
+      <div class="gallery-item"><img src="img/p37.jpg" alt="Custom candy red pickup restored and painted in the Geraldine workshop" loading="lazy"><div class="gallery-overlay"><span>Custom Pick Up</span></div></div>
+      <div class="gallery-item"><img src="img/f06.jpg" alt="Work on a red Ferrari convertible" loading="lazy"><div class="gallery-overlay"><span>Modern Exotic</span></div></div>
+      <div class="gallery-item"><img src="img/p28.jpg" alt="Restored 1940s Ford pickup with its matching trailer" loading="lazy"><div class="gallery-overlay"><span>40s Ford Truck</span></div></div>
+      <div class="gallery-item"><img src="img/f03.jpg" alt="Restored blue leather interior of a classic car" loading="lazy"><div class="gallery-overlay"><span>Interior Detail</span></div></div>
+      <div class="gallery-item"><img src="img/p52.jpg" alt="Vintage hot rod in the Geraldine workshop" loading="lazy"><div class="gallery-overlay"><span>In the Workshop</span></div></div>
+      <div class="gallery-item"><img src="img/p31.jpg" alt="Show-ready restored classic on display" loading="lazy"><div class="gallery-overlay"><span>Show Ready</span></div></div>
+      <div class="gallery-item"><img src="img/p43.jpg" alt="Bare metal classic coupe mid restoration" loading="lazy"><div class="gallery-overlay"><span>Bare Metal Coupe</span></div></div>
+      <div class="gallery-item"><img src="img/f02.jpg" alt="Panel beater at work on a classic body" loading="lazy"><div class="gallery-overlay"><span>Skilled Hands</span></div></div>
+      <div class="gallery-item"><img src="img/p26.jpg" alt="Fabricated gullwing BBQ trailer built in the Geraldine workshop" loading="lazy"><div class="gallery-overlay"><span>Fabricated Gullwing BBQ Trailer</span></div></div>
+      <div class="gallery-item"><img src="img/p10.jpg" alt="Model A pickup body in primer during restoration" loading="lazy"><div class="gallery-overlay"><span>Model A Pickup</span></div></div>
+      <div class="gallery-item"><img src="img/p22.jpg" alt="Panel work on a classic in the workshop" loading="lazy"><div class="gallery-overlay"><span>Panel Work</span></div></div>
+      <div class="gallery-item"><img src="img/p07.jpg" alt="Classic body prepped for the next stage" loading="lazy"><div class="gallery-overlay"><span>Prep Work</span></div></div>
+      <div class="gallery-item"><img src="img/p17.jpg" alt="Classic car masked in the spray booth" loading="lazy"><div class="gallery-overlay"><span>In the Booth</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<!-- BEFORE & AFTER -->
+<section id="transformations">
+  <div class="container">
+    <div class="peel-header fade-up">
+      <div class="section-label">Before &amp; After</div>
+      <h2 class="section-h2 dark">Turn Back The Years</h2>
+      <p class="section-p" style="margin-top:1rem;">Every one of these came to us in the state on the left. Drag across each photo to turn the page back and see where it started.</p>
+      <span class="peel-hint">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l-5 7 5 7"/><path d="M3 12h13a5 5 0 0 0 5-5V5"/></svg>
+        Drag any photo to peel it back
+      </span>
+    </div>
+    <div class="peel-grid">
+
+      <div class="peel-card fade-up">
+        <div class="peel-stage">
+          <img class="peel-after" src="img/resto1-after.jpg" alt="The restored Bedford flatbed truck finished in yellow and black" loading="lazy">
+          <div class="peel-page">
+            <img src="img/resto1-before.jpg" alt="The Bedford truck as it arrived, dusty and stripped in the shed">
+            <div class="peel-shade"></div>
+          </div>
           <span class="peel-tag is-before">Before</span>
           <span class="peel-tag is-after">After</span>
           <input class="peel-range" type="range" min="0" max="100" value="0" aria-label="Peel back the Bedford truck restoration">
@@ -1265,7 +1421,7 @@
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll('.fade-up, .service-card, .gallery-item, .review-card, .credentials-list li').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-up, .service-card, .gallery-item, .mech-item, .review-card, .credentials-list li').forEach(el => observer.observe(el));
 
   // BEFORE & AFTER PAGE-TURN PEEL
   (function(){
